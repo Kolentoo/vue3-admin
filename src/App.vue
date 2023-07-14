@@ -1,6 +1,6 @@
 <template>
   <div class="kolento">
-    kolento
+    <router-view />
   </div>
 </template>
 
