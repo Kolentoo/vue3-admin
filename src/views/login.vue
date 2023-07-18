@@ -1,45 +1,130 @@
 <template>
   <div class="login">
     <div class="form-box">
-      <el-form
-        ref="ruleFormRef"
-        :model="loginForm"
-        status-icon
+      <p class="title">K o l e n t o</p>
+      <a-form
+        ref="loginBox"
+        :model="formState"
+        name="basic"
+        :label-col="{span:0}"
+        :wrapper-col="{ span: 24 }"
+        autocomplete="off"
         :rules="rules"
-        label-width="120px"
-        class="demo-ruleForm" >
-        <el-form-item label="Password" prop="pass">
-          <el-input v-model="ruleForm.pass" type="password" autocomplete="off" />
-        </el-form-item>
-        <el-form-item label="Confirm" prop="checkPass">
-          <el-input
-            v-model="ruleForm.checkPass"
-            type="password"
-            autocomplete="off"
-          />
-        </el-form-item>
-        <el-form-item label="Age" prop="age">
-          <el-input v-model.number="ruleForm.age" />
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="submitForm(ruleFormRef)" >Submit</el-button >
-          <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
-        </el-form-item>
-      </el-form>
+        size="large"
+        @validate="checkForm"
+        @finish="onFinish"
+        @finishFailed="onFinishFailed" >
+        <a-form-item
+          name="uname">
+          <a-input  v-model:value="formState.uname" placeholder="请输入用户名" allow-clear>
+            <template #prefix>
+              <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
+            </template>
+          </a-input> 
+        </a-form-item>
+
+        <a-form-item
+          name="psd">
+          <a-input-password  v-model:value="formState.psd" placeholder="请输入密码" type="password" allow-clear>
+            <template #prefix>
+              <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
+            </template>
+          </a-input-password>
+        </a-form-item>
+
+        <a-form-item :wrapper-col="{ offset: 0, span: 24 }">
+          <a-button class="login-btn"  type="primary" html-type="submit">登录</a-button>
+        </a-form-item>
+      </a-form>
     </div>
   </div>
 </template>
 
 <script setup>
+  import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
+  import { reactive,ref } from 'vue';
+  const formState = reactive({
+    uname: '',
+    psd: '',
+  });
+  // 表单验证
+  let loginBox = ref();
+  let usernameCheck = async (_rule, value) => {
+    if (value === '') {
+      return Promise.reject('请输入用户名');
+    } else {
+      if (formState.username !== '') {
+        loginBox.value.validateFields('验证通过');
+      }
+      return Promise.resolve();
+    }
+  };
+  let passwordCheck = async (_rule, value) => {
+    if (value === '') {
+      return Promise.reject('请输入密码');
+    } else {
+      if (formState.password !== '') {
+        loginBox.value.validateFields('验证通过');
+      }
+      return Promise.resolve();
+    }
+  };
+  const rules = {
+    uname: [{
+      required: true,
+      validator: usernameCheck,
+      trigger: 'change',
+    }],
+    psd: [{
+      required: true,
+      validator: passwordCheck,
+      trigger: 'change',
+    }],
+  };
+  const onFinish = values => {
+    console.log('Success:', values,'跳转到首页');
+
+  };
+  const onFinishFailed = errorInfo => {
+    console.log('Failed:', errorInfo);
+  };
+
+  // 表单重置
+  const resetForm = () => {
+    loginBox.value.resetFields();
+  };
+
+  const checkForm = (...args) => {
+    console.log(1,args);
+  };
 
 </script>
 
 <style lang="scss" scoped>
+  .title {
+    font-size: 44px;
+    color: rgba(0,0,0,.85);
+    font-weight: 600;
+    text-align: center;
+    background: linear-gradient(120deg, #4abf8a,#3eaf7c 30%, #3e71af 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
   .login {
-    background: url('../../public/images/login-bj.jpg') no-repeat center center;
-    background-size: cover;
-    width: 100%;
-    max-width: 100vw;
     height: 100vh;
+    width: 100%;
+    min-height: 100%;
+    background: #f0f2f5 url(../../public/images/bj.svg) no-repeat 50%;
+    background-size: 100%;
+
+    .form-box {
+      width: 400px;
+      margin:0 auto;
+      padding-top: 15%;
+      .login-btn {
+        width: 100%;
+      }
+      
+    }
   }
 </style>
