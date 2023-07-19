@@ -45,6 +45,8 @@
   import { useRouter } from "vue-router";
   import { message } from 'ant-design-vue';
   import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
+  import apiBox from '@/request/api.js';
+
 
   // 定义路由
   const router = useRouter();
@@ -91,16 +93,27 @@
   };
 
   // 验证成功
-  const onFinish = values => {
+  const onFinish = async(values) => {
     console.log('Success:', values,'跳转到首页');
     if(values.uname=='kolento'&&values.psd=='kolento'){
-      router.push('/');
+
+      const result = await apiBox.loginApi({
+        username:formState.uname,
+        password:formState.psd
+      });
+      console.log('result',result);
+      if(result.data.success){
+        message.success('登录成功');
+        router.push('/');
+      }else{
+        message.info('用户名或密码错误');
+      }
+      
     }else{
       message.info('用户名或密码错误');
     }
 
   };
-
 
   // 验证失败
   const onFinishFailed = errorInfo => {
@@ -117,11 +130,13 @@
     console.log(1,args);
   };
 
+
 </script>
 
 <style lang="scss" scoped>
   .title {
     font-size: 44px;
+    margin-bottom: 30px;
     color: rgba(0,0,0,.85);
     font-weight: 600;
     text-align: center;
