@@ -41,13 +41,21 @@
 </template>
 
 <script setup>
-  import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
   import { reactive,ref } from 'vue';
+  import { useRouter } from "vue-router";
+  import { message } from 'ant-design-vue';
+  import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
+
+  // 定义路由
+  const router = useRouter();
+  
+  // 用户名+密码
   const formState = reactive({
     uname: '',
     psd: '',
   });
-  // 表单验证
+
+  // 表单验证规则
   let loginBox = ref();
   let usernameCheck = async (_rule, value) => {
     if (value === '') {
@@ -81,10 +89,20 @@
       trigger: 'change',
     }],
   };
+
+  // 验证成功
   const onFinish = values => {
     console.log('Success:', values,'跳转到首页');
+    if(values.uname=='kolento'&&values.psd=='kolento'){
+      router.push('/');
+    }else{
+      message.info('用户名或密码错误');
+    }
 
   };
+
+
+  // 验证失败
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
@@ -94,6 +112,7 @@
     loginBox.value.resetFields();
   };
 
+  // 表单验证时触发
   const checkForm = (...args) => {
     console.log(1,args);
   };

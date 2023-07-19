@@ -1,3 +1,8 @@
 @import './base.css';
 
+.kolento p {margin-bottom: 0;}
+.pointer {cursor: pointer;}
 
+
+/* 对antdesign样式的控制 */
+.user-info .anticon {display:none!important;}
