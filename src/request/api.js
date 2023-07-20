@@ -8,6 +8,14 @@ export default {
             url: `/api/login`,
             method: "post",
         });
+    },
+
+    //登录接口
+    loginOutApi() {
+        return service({
+            url: `/api/loginout`,
+            method: "post",
+        });
     }
    
 }

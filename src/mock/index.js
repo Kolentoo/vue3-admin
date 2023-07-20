@@ -5,11 +5,19 @@ import Mock from 'mockjs';
 let loginData = {
   token:'kolento',
   username:'Kolento',
-  authBox:['home','user','table','article'],
+  authBox:['home','user','setting','auth','menuAuth','buttonAuth'],
 }
 Mock.mock("/api/login", {
   success:true,
   data:loginData
+})
+
+Mock.mock("/api/loginout", {
+  success:true,
+  data:{
+
+  },
+  msg:'退出成功'
 })
 
 export default Mock

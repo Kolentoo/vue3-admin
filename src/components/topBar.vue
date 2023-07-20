@@ -18,13 +18,13 @@
         <template #overlay>
           <a-menu>
             <a-menu-item key="0">
-              <a href="http://www.alipay.com/">1st menu item</a>
+              系统公告
             </a-menu-item>
             <a-menu-item key="1">
-              <a href="http://www.taobao.com/">2nd menu item</a>
+              修改密码
             </a-menu-item>
             <a-menu-divider />
-            <a-menu-item key="3">3rd menu item</a-menu-item>
+            <a-menu-item key="3" @click.prevent="loginOut">退出登录</a-menu-item>
           </a-menu>
         </template>
       </a-dropdown>
@@ -33,9 +33,28 @@
 </template>
 
 <script setup>
-import { MenuUnfoldOutlined, MenuFoldOutlined,DownOutlined} from '@ant-design/icons-vue';
 import {ref} from 'vue';
-let open = ref(false)
+import { MenuUnfoldOutlined, MenuFoldOutlined,DownOutlined} from '@ant-design/icons-vue';
+import { message } from 'ant-design-vue';
+import { useRouter } from "vue-router";
+import apiBox from '@/request/api.js';
+
+// 定义路由
+const router = useRouter();
+
+let open = ref(false);
+
+let loginOut =async(key)=>{
+  console.log('key',key);
+  const result = await apiBox.loginOutApi();
+  console.log('result',result);
+  if(result.data.success){
+    message.success(result.data.msg);
+    router.replace('/login');
+  }else{
+    message.error('操作失败');
+  }
+}
   
 </script>
 
