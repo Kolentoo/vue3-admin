@@ -1,0 +1,49 @@
+<template>
+    
+    <template v-for="item in menuData" :key="item.key">
+        <template v-if="item.children">
+            <a-sub-menu :key="item.key">
+                <template #title>
+                    <i :class="item.icon"></i>
+                    {{ item.label }}
+                </template>
+                <template v-if="!item.children">
+                    <a-menu-item v-for="list in item.children" :key="list.key" @click="menuClick(list)">
+                        {{ list.label }}
+                    </a-menu-item>
+                </template>
+                
+                <template v-if="item.children">
+                    <menu-tree
+                        :menuList="item.children"
+                        @menuClick="menuClick" >
+                    </menu-tree>
+                </template>
+
+            </a-sub-menu>
+        </template>
+        <template v-else>
+            <a-menu-item :key="item.key" @click="menuClick(item)">
+                <i :class="item.icon"></i>
+                {{ item.label }}
+            </a-menu-item>
+        </template>
+    </template>
+    
+</template>
+
+<script setup>
+import {reactive} from 'vue';
+
+const emit = defineEmits(['menuClick']);
+
+const props = defineProps(['menuList']);
+console.log('props',props);
+
+let menuData = reactive([]);
+menuData=props.menuList;
+
+const menuClick = (item) => {
+  emit('menuClick', item);
+};
+</script>

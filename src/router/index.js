@@ -36,13 +36,13 @@ const router = createRouter({
           name:'auth',
           children:[
             {
-              path:'/button-auth',
-              name:'button-auth',
+              path:'/auth/button',
+              name:'button',
               component:ButtonAuth
             },
             {
-              path:'/menu-auth',
-              name:'menu-auth',
+              path:'/auth/menu',
+              name:'menu',
               component:MenuAuth
             }
           ]
