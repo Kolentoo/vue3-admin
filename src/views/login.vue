@@ -46,7 +46,8 @@
   import { message } from 'ant-design-vue';
   import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
   import apiBox from '@/request/api.js';
-
+  import {useStore} from '../stores/index.js'
+  const store = useStore();
 
   // 定义路由
   const router = useRouter();
@@ -103,6 +104,13 @@
       });
       console.log('result',result);
       if(result.data.success){
+        // 将登陆返回的信息保存进pinia
+        store.$patch({
+          username:result.data.data.username,
+          id:result.data.data.id,
+          authBox:result.data.data.authBox,
+          token:result.data.data.token
+        })
         message.success('登录成功');
         router.push('/');
       }else{

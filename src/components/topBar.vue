@@ -38,6 +38,9 @@ import { MenuUnfoldOutlined, MenuFoldOutlined,DownOutlined} from '@ant-design/ic
 import { message } from 'ant-design-vue';
 import { useRouter } from "vue-router";
 import apiBox from '@/request/api.js';
+import {useStore} from '../stores/index'
+const store = useStore();
+console.log('store存储',store)
 
 // 定义路由
 const router = useRouter();
@@ -50,6 +53,9 @@ let loginOut =async(key)=>{
   console.log('result',result);
   if(result.data.success){
     message.success(result.data.msg);
+
+    // 使用pinia清除原先存储的数据
+    store.clearAll();
     router.replace('/login');
   }else{
     message.error('操作失败');

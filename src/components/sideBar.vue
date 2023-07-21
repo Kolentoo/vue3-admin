@@ -38,14 +38,14 @@ const state = reactive({
 });
 
 // 菜单数据
-let authBox = reactive([['home','user','auth','menuAuth','setting']])
+let authBox = reactive(['home','user','auth','menuAuth','setting'])
 const items = reactive(
   [
     {
       icon: 'ri-home-3-line',
       label: '首页',
       title: 'home',
-      auth:'home,',
+      auth:'home',
       key:'home',
       path:'/'
     },
