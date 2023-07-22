@@ -62,7 +62,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   let sessionStr = sessionStorage.getItem('kolento');
   let sessionData = JSON.parse(sessionStr);
-  let token = sessionData.token;
+  let token = sessionData?sessionData.token:'';
   if(token) {
       if (to.name === 'login'){
         next('/')

@@ -78,7 +78,7 @@ const items = reactive(
         }, {
           label: '按钮权限',
           title: 'buttonAuth',
-          auth: 'buttonAuth',
+          auth: 'buttonAuth1',
           key: 'buttonAuth',
           path:'/auth/button'
         }
@@ -128,7 +128,7 @@ const items = reactive(
     },
     {
       icon: 'ri-settings-3-line',
-      label: '系统设置',
+      label: '表单设置',
       title: 'setting',
       auth: 'setting',
       key: 'setting',
@@ -148,9 +148,5 @@ let menuClick=(item)=>{
     height: calc(100vh - 75px);
     overflow-y: auto;
   }
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    background-color: rgba(255,255,255,0.5);
-  }
+
 </style>

@@ -2,6 +2,7 @@
 
 .kolento p {margin-bottom: 0;}
 .pointer {cursor: pointer;}
+.bg {background: #fff;padding: 16px;border-radius:10px;}
 
 
 /* 对antdesign样式的控制 */
@@ -11,4 +12,11 @@
 .menu-txt {margin-left: 6px;}
 .ant-menu-inline-collapsed  .menu-txt {
     display: none;
+}
+
+/* 滚动条样式控制 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255,255,255,0.5);
 }

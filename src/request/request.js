@@ -1,7 +1,7 @@
 import axios from 'axios';
 let sessionStr = sessionStorage.getItem('kolento');
 let sessionData = JSON.parse(sessionStr);
-let token = sessionData.token;
+let token = sessionData?sessionData.token:'';
 
 // 创建axios实例
 const service = axios.create({

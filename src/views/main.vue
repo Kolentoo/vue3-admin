@@ -34,6 +34,7 @@
     display:flex;
     .side-box {
       height: 100vh;
+      max-height: 100vh;
       width: 250px;
       transition:all ease 0.3s;
       background: #001529;
@@ -69,9 +70,14 @@
 
     .content-box {
       width: calc(100vw - 250px);
+      
       background: rgb(240,242,245);
       transition:all ease 0.3s;
-      .content {padding: 20px;}
+      .content {
+        padding: 20px;
+        height: calc(100vh - 60px);
+        overflow-y:auto;
+      }
     }
     .big-content {
       width: calc(100vw - 80px);

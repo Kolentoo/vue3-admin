@@ -26,7 +26,7 @@ app.use(router)
 // 全局自定义指令
 let sessionStr = sessionStorage.getItem('kolento');
 let sessionData = JSON.parse(sessionStr);
-let authBox = sessionData.authBox;
+let authBox = sessionData?sessionData.authBox:[];
 app.directive('auth',{
     mounted(el, binding, vnode) {
         if (!authBox.includes(binding.value)) {
