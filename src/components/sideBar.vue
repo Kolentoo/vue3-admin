@@ -25,15 +25,19 @@
 </template>
 
 <script setup>
-import { reactive, watch, h } from 'vue';
+import { reactive, watch, h,computed } from 'vue';
 import { useRouter } from 'vue-router';
-import menuTree from './menuTree.vue'
+import menuTree from './menuTree.vue';
+import {useStore} from '../stores/index';
+const store  = useStore();
 
 const router = useRouter();
 
 // 菜单栏状态
 const state = reactive({
-  collapsed: false,
+  collapsed: computed(()=>{
+    return store.menuStatus
+  }),
   selectedKeys:['home']
 });
 

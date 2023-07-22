@@ -1,6 +1,6 @@
 <template>
   <div class="top-bar">
-    <div class="menu-btn pointer">
+    <div class="menu-btn pointer" @click="toggleSideBar">
       <MenuUnfoldOutlined v-show="open" />
       <MenuFoldOutlined v-show="!open"  />
     </div>
@@ -46,6 +46,10 @@ console.log('store存储',store)
 const router = useRouter();
 
 let open = ref(false);
+let toggleSideBar=()=>{
+  store.toggleSide();
+  open.value=store.menuStatus;
+}
 
 let loginOut =async(key)=>{
   console.log('key',key);
@@ -56,7 +60,7 @@ let loginOut =async(key)=>{
 
     // 使用pinia清除原先存储的数据
     store.clearAll();
-    router.replace('/login');
+    router.push('/login');
   }else{
     message.error('操作失败');
   }

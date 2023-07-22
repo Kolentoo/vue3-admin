@@ -57,4 +57,27 @@ const router = createRouter({
   ]
 })
 
+// 导航守卫
+
+router.beforeEach((to, from, next) => {
+  let sessionStr = sessionStorage.getItem('kolento');
+  let sessionData = JSON.parse(sessionStr);
+  let token = sessionData.token;
+  if(token) {
+      if (to.name === 'login'){
+        next('/')
+      }else{
+        next()
+      }
+  } else {
+      // 没有token 只能访问登录页面 其它页面无法访问
+    if (to.name === 'login'){
+      next()
+    }else{
+      next('/login')
+    } 
+  }
+  
+})
+
 export default router

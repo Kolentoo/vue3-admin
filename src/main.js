@@ -3,6 +3,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 // pinia数据存储 状态管理
 import { createPinia } from 'pinia'
+import piniaPluginPersist from 'pinia-plugin-persist'//引入pinia数据持久化插件
 
 import App from './App.vue'
 // 路由
@@ -17,7 +18,7 @@ import 'remixicon/fonts/remixicon.css'
 
 const app = createApp(App)
 app.use(Antd)
-app.use(createPinia())
+app.use(createPinia().use(piniaPluginPersist));
 app.use(router)
 
 app.mount('#app')

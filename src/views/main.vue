@@ -1,12 +1,12 @@
 <template>
   <div class="main">
-    <div class="side-box">
+    <div :class="['side-box',smallSide?'small-side':'']">
       <div class="logo">
-        <p class="title">K o l e n t o</p>
+        <p class="title">Kolento</p>
       </div>
       <sideBar />
     </div>
-    <div class="content-box">
+    <div :class="['content-box',smallSide?'big-content':'']">
       <topBar />
       <div class="content">
         <router-view />
@@ -17,8 +17,15 @@
 </template>
 
 <script setup>
+  import {computed} from 'vue';
   import sideBar from '@/components/sideBar.vue';
   import topBar from '@/components/topBar.vue';
+  import {useStore} from '../stores/index';
+  const store  = useStore();
+
+  let smallSide =computed(()=>{
+    return store.menuStatus;
+  })
 
 </script>
 
@@ -28,6 +35,7 @@
     .side-box {
       height: 100vh;
       width: 250px;
+      transition:all ease 0.3s;
       background: #001529;
       box-shadow: 2px 0 6px rgba(0,21,41,.35);
       .logo {
@@ -43,6 +51,18 @@
           -webkit-text-fill-color: transparent;
           -webkit-background-clip: text;
           margin-bottom: 0;
+          letter-spacing: 6px;
+          transition: all ease 0.3s;
+        }
+      }
+    }
+    .small-side {
+      width: 80px;
+      .logo {
+        .title {
+          width: 96%;
+          font-size: 13px;
+          letter-spacing: 2px;
         }
       }
     }
@@ -50,7 +70,11 @@
     .content-box {
       width: calc(100vw - 250px);
       background: rgb(240,242,245);
+      transition:all ease 0.3s;
       .content {padding: 20px;}
+    }
+    .big-content {
+      width: calc(100vw - 80px);
     }
   }
 </style>

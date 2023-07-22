@@ -5,7 +5,7 @@
             <a-sub-menu :key="item.key" v-if="authBox.includes(item.auth)">
                 <template #title>
                     <i :class="item.icon"></i>
-                    {{ item.label }}
+                    <span class="menu-txt">{{ item.label }}</span>
                 </template>
                 <template v-if="!item.children">
                     <template v-for="list in item.children" :key="list.key">
@@ -28,7 +28,7 @@
         <template v-else>
             <a-menu-item v-if="authBox.includes(item.auth)" :key="item.key" @click="menuClick(item)">
                 <i :class="item.icon"></i>
-                {{ item.label }}
+                <span class="menu-txt">{{ item.label }}</span>
             </a-menu-item>
         </template>
     </template>
@@ -42,7 +42,8 @@ const store = useStore();
 console.log('store',store)
 
 // 权限数据
-let authBox = reactive(['home','user','auth','menuAuth','setting'])
+let authBox = reactive([]);
+authBox=store.authBox;
 
 const emit = defineEmits(['menuClick']);
 
