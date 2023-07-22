@@ -28,7 +28,6 @@ export const useStore = defineStore('main', {
       this.menuStatus=!this.menuStatus;
     },
     clearAll() {
-      console.log('删除记录',this)
       this.username='';
       this.id='';
       this.token='';

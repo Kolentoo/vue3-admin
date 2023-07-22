@@ -39,7 +39,6 @@
 import {reactive} from 'vue';
 import {useStore} from '../stores/index'
 const store = useStore();
-console.log('store',store)
 
 // 权限数据
 let authBox = reactive([]);
@@ -48,7 +47,6 @@ authBox=store.authBox;
 const emit = defineEmits(['menuClick']);
 
 const props = defineProps(['menuList']);
-console.log('props',props);
 
 let menuData = reactive([]);
 menuData=props.menuList;

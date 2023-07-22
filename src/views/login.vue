@@ -95,14 +95,12 @@
 
   // 验证成功
   const onFinish = async(values) => {
-    console.log('Success:', values,'跳转到首页');
     if(values.uname=='kolento'&&values.psd=='kolento'){
 
       const result = await apiBox.loginApi({
         username:formState.uname,
         password:formState.psd
       });
-      console.log('result',result);
       if(result.data.success){
         // 将登陆返回的信息保存进pinia
         store.$patch({
@@ -135,7 +133,7 @@
 
   // 表单验证时触发
   const checkForm = (...args) => {
-    console.log(1,args);
+
   };
 
 

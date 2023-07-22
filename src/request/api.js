@@ -10,12 +10,20 @@ export default {
         });
     },
 
-    //登录接口
+    //退出登录接口
     loginOutApi() {
         return service({
             url: `/api/loginout`,
             method: "post",
         });
-    }
+    },
+
+    // 首页数据
+    homeApi() {
+        return service({
+            url: `/api/home/data`,
+            method: "get",
+        });
+    },
    
 }

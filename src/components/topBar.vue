@@ -40,7 +40,6 @@ import { useRouter } from "vue-router";
 import apiBox from '@/request/api.js';
 import {useStore} from '../stores/index'
 const store = useStore();
-console.log('store存储',store)
 
 // 定义路由
 const router = useRouter();
@@ -52,9 +51,7 @@ let toggleSideBar=()=>{
 }
 
 let loginOut =async(key)=>{
-  console.log('key',key);
   const result = await apiBox.loginOutApi();
-  console.log('result',result);
   if(result.data.success){
     message.success(result.data.msg);
 

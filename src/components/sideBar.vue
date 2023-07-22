@@ -138,7 +138,6 @@ const items = reactive(
 );
 
 let menuClick=(item)=>{
-  console.log('menuClick',item);
   router.push(item.path);
 }
 

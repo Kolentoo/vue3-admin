@@ -16,10 +16,24 @@ import Mock from './mock'
 // 图标库
 import 'remixicon/fonts/remixicon.css'
 
+
+
 const app = createApp(App)
 app.use(Antd)
 app.use(createPinia().use(piniaPluginPersist));
 app.use(router)
+
+// 全局自定义指令
+let sessionStr = sessionStorage.getItem('kolento');
+let sessionData = JSON.parse(sessionStr);
+let authBox = sessionData.authBox;
+app.directive('auth',{
+    mounted(el, binding, vnode) {
+        if (!authBox.includes(binding.value)) {
+            el.remove();
+        }
+    }
+})
 
 app.mount('#app')
 
