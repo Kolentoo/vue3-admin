@@ -54,8 +54,8 @@
   
   // 用户名+密码
   const formState = reactive({
-    uname: '',
-    psd: '',
+    uname: 'kolento',
+    psd: 'kolento',
   });
 
   // 表单验证规则

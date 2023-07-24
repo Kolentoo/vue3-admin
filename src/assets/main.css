@@ -20,3 +20,6 @@
     height: 8px;
     background-color: rgba(255,255,255,0.5);
 }
+
+/* 标签页样式 */
+.nav-box .ant-tabs-nav {margin: 0!important;}

@@ -57,13 +57,13 @@ const expandedKeys = ref([]);
 const selectedKeys = ref(['home']);
 const checkedKeys = ref(['home']);
 watch(expandedKeys, () => {
-  console.log('expandedKeys', expandedKeys);
+  // console.log('expandedKeys', expandedKeys);
 });
 watch(selectedKeys, () => {
-  console.log('selectedKeys', selectedKeys);
+  // console.log('selectedKeys', selectedKeys);
 });
 watch(checkedKeys, () => {
-  console.log('checkedKeys', checkedKeys);
+  // console.log('checkedKeys', checkedKeys);
 });
 
 // 初始化

@@ -1,29 +1,30 @@
-# kolento-admin
+# Vue3管理系统
+> 项目基于 **vue3.3.4 + ant design vue 4.0.0** 开发。<br/>
+基于Vue3.x的后台管理系统模板。
 
-This template should help get you started developing with Vue 3 in Vite.
+## 测试账号
+**用户名：** kolento <br/>
+**密码：** kolento
 
-## Recommended IDE Setup
+## 版本
+```json
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
+    "ant-design-vue": "^4.0.0",
+    "axios": "^1.4.0",
+    "mockjs": "^1.1.0",
+    "pinia": "^2.1.3",
+    "pinia-plugin-persist": "^1.0.0",
+    "remixicon": "^3.4.0",
+    "sass": "^1.63.6",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.2"
+  }
+```
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+## 使用
+```
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
 npm run build
 ```

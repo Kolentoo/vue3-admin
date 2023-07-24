@@ -4,7 +4,6 @@ import Login from '@/views/login.vue';
 import Home from '@/views/home.vue';
 import User from '@/views/user.vue';
 import Setting from '@/views/setting.vue';
-import ButtonAuth from '@/views/ButtonAuth.vue';
 import MenuAuth from '@/views/MenuAuth.vue';
 
 
@@ -24,33 +23,46 @@ const router = createRouter({
         {
           path:'',
           name:'home',
-          component:Home
+          component:Home,
+          meta:{
+            title:'首页',
+            name:'home'
+          }
         },
         {
           path:'/user',
           name:'user',
-          component:User
+          component:User,
+          meta:{
+            title:'用户管理',
+            name:'user'
+          }
         },
         {
           path:'/auth',
           name:'auth',
           children:[
             {
-              path:'/auth/button',
-              name:'button',
-              component:ButtonAuth
-            },
-            {
               path:'/auth/menu',
               name:'menu',
-              component:MenuAuth
+              component:MenuAuth,
+              title:'菜单权限',
+              meta:{
+                title:'菜单权限',
+                name:'menu'
+              }
             }
           ]
         },
         {
           path:'/setting',
           name:'setting',
-          component:Setting
+          component:Setting,
+          title:'表单设置',
+          meta:{
+            title:'表单设置',
+            name:'setting'
+          }
         }
       ]
     }

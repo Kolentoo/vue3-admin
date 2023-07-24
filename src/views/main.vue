@@ -8,8 +8,13 @@
     </div>
     <div :class="['content-box',smallSide?'big-content':'']">
       <topBar />
+      <navBar />
       <div class="content">
-        <router-view />
+        <router-view v-slot="{ Component }">
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
+        </router-view>
       </div>
       
     </div>
@@ -20,6 +25,7 @@
   import {computed} from 'vue';
   import sideBar from '@/components/sideBar.vue';
   import topBar from '@/components/topBar.vue';
+  import navBar from '@/components/navBar.vue';
   import {useStore} from '../stores/index';
   const store  = useStore();
 
@@ -75,7 +81,7 @@
       transition:all ease 0.3s;
       .content {
         padding: 20px;
-        height: calc(100vh - 60px);
+        height: calc(100vh - 106px);
         overflow-y:auto;
       }
     }

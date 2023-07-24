@@ -75,12 +75,6 @@ const items = reactive(
           auth: 'menuAuth',
           key: 'menuAuth',
           path:'/auth/menu'
-        }, {
-          label: '按钮权限',
-          title: 'buttonAuth',
-          auth: 'buttonAuth1',
-          key: 'buttonAuth',
-          path:'/auth/button'
         }
       ]
     },

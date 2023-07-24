@@ -14,7 +14,6 @@ const service = axios.create({
 // 接口请求拦截
 service.interceptors.request.use(
   (res) => {
-    console.log('res',res)
     // 请求成功拦截, 无论地址是否是对的, 只要发请求就会走这个
     if (token) {
       res.headers['Authorization'] = token // 如果要求携带在请求头中

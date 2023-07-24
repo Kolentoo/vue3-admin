@@ -21,7 +21,7 @@
         <br />
         4.使用了Pinia进行登录信息的数据存储，安装了pinia-plugin-persist将数据session持久化
         <br />
-        5.标签页：可以缓存页面的状态，在多个页面中来回切换。（开发中）
+        5.标签页：可以缓存页面的状态，在多个页面中来回切换。
         <br />
       </a-descriptions-item>
     </a-descriptions>
