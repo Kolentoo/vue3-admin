@@ -3,7 +3,7 @@
 基于Vue3.x的后台管理系统模板。
 
 ## 测试地址
-**预览地址：** [Vue3-Ant-Admin](http://101.132.73.35/login)<br/>
+**预览地址：** [Vue3-Ant-Admin](http://101.132.73.35)<br/>
 **用户名：** kolento <br/>
 **密码：** kolento
 
