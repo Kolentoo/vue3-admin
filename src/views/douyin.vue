@@ -31,7 +31,7 @@
             <a-tag color="success">{{ record.status }}</a-tag>
           </template>
           <template v-else-if="column.key === 'action'">
-            <a-button class="btn-list" type="primary" size="small">开始</a-button>
+            <a-button class="btn-list" type="primary" size="small" @click="start">开始</a-button>
             <a-button class="btn-list" type="primary" size="small">停止</a-button>
             <a-button class="btn-list" type="primary" size="small">查看日志</a-button>
           </template>
@@ -55,6 +55,15 @@
   const handleFinishFailed = errors => {
     console.log(errors);
   };
+
+  const start = ()=>{
+    console.log('开始执行任务');
+
+  }
+
+
+
+
 
   const tableData = reactive([
     {
