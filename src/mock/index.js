@@ -7,7 +7,7 @@ let loginData = {
   token:'kolento',
   username:'Kolento',
   id:1,
-  authBox:['home','user','setting','auth','menuAuth'],
+  authBox:['home','user','setting','auth','menuAuth','zimeiti','douyin'],
 }
 Mock.mock("/api/login", {
   success:true,

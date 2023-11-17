@@ -42,7 +42,7 @@ const state = reactive({
 });
 
 // 菜单数据
-let authBox = reactive(['home','user','auth','menuAuth','setting'])
+let authBox = reactive(['home','user','auth','menuAuth','setting','zimeiti','douyin'])
 const items = reactive(
   [
     {
@@ -60,6 +60,24 @@ const items = reactive(
       auth:'user',
       key:'user',
       path:'/user'
+    },
+    {
+      icon: 'ri-bard-line',
+      label: '自媒体管理',
+      title: 'zimeiti',
+      auth:'zimeiti',
+      key:'zimeiti',
+      path:'/zimeiti',
+      children: [
+        {
+
+          label: '抖音直播点赞',
+          title: 'douyin',
+          auth: 'douyin',
+          key: 'douyin',
+          path:'/zimeiti/douyin'
+        }
+      ]
     },
     {
       icon: 'ri-function-line',

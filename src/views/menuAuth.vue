@@ -35,6 +35,10 @@ const treeData = [
     key: 'user',
   },
   {
+    title: '用户管理',
+    key: 'zimeiti',
+  },
+  {
     title: '权限管理',
     key: 'auth',
     children: [

@@ -5,6 +5,7 @@ import Home from '@/views/home.vue';
 import User from '@/views/user.vue';
 import Setting from '@/views/setting.vue';
 import MenuAuth from '@/views/MenuAuth.vue';
+import Douyin from '@/views/douyin.vue'
 
 
 const router = createRouter({
@@ -37,6 +38,22 @@ const router = createRouter({
             title:'用户管理',
             name:'user'
           }
+        },
+        {
+          path:'/zimeiti',
+          name:'zimeiti',
+          children:[
+            {
+              path:'/zimeiti/douyin',
+              name:'douyin',
+              component:Douyin,
+              title:'自媒体管理',
+              meta:{
+                title:'抖音直播点赞',
+                name:'douyin'
+              }
+            }
+          ]
         },
         {
           path:'/auth',
