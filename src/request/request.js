@@ -1,7 +1,5 @@
 import axios from 'axios';
-let sessionStr = sessionStorage.getItem('kolento');
-let sessionData = JSON.parse(sessionStr);
-let token = sessionData?sessionData.token:'';
+
 
 // 创建axios实例
 const service = axios.create({
@@ -13,7 +11,11 @@ const service = axios.create({
 
 // 接口请求拦截
 service.interceptors.request.use(
+
   (res) => {
+    let sessionStr = sessionStorage.getItem('kolento');
+    let sessionData = JSON.parse(sessionStr);
+    let token = sessionData?sessionData.token:'';
     // 请求成功拦截, 无论地址是否是对的, 只要发请求就会走这个
     if (token) {
       res.headers['Authorization'] = token // 如果要求携带在请求头中
